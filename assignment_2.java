@@ -8,12 +8,8 @@ abstract class UIElement {
     public void setText(String text) {
         this.text = text;
     }
-
-    // The specific look-and-feel is left to the concrete implementations
     public abstract void display();
 }
-
-// 2. Abstract Products
 abstract class Button extends UIElement {
     public Button(String text) { super(text); }
 }
@@ -25,8 +21,6 @@ abstract class TextField extends UIElement {
 abstract class Checkbox extends UIElement {
     public Checkbox(String text) { super(text); }
 }
-
-// 3. Concrete Products - Style A (Simple/Boxy)
 class ButtonA extends Button {
     public ButtonA(String text) { super(text); }
 
@@ -56,7 +50,6 @@ class CheckboxA extends Checkbox {
     }
 }
 
-// 4. Concrete Products - Style B (Fancy/Arrow)
 class ButtonB extends Button {
     public ButtonB(String text) { super(text); }
 
@@ -80,7 +73,7 @@ class CheckboxB extends Checkbox {
 
     @Override
     public void display() {
-        System.out.println("(\u2713) " + text); // Unicode checkmark
+        System.out.println("(\u2713) " + text);
     }
 }
 
@@ -130,7 +123,7 @@ public class assignment_2 {
         TextField txt = factory.createTextField("User Name");
         Checkbox chk = factory.createCheckbox("Accept Terms");
 
-        System.out.println("--- Rendering ---");
+        System.out.println("Rendering");
         btn.display();
         txt.display();
         chk.display();
@@ -144,11 +137,11 @@ public class assignment_2 {
     }
 
     public static void main(String[] args) {
-        System.out.println("=== STYLE A (Box Style) ===");
+        System.out.println("--- STYLE A (Box Style) ---");
         UIFactory factoryA = new AFactory();
         renderUI(factoryA);
 
-        System.out.println("\n\n=== STYLE B (Arrow Style) ===");
+        System.out.println("\n\n--- STYLE B (Arrow Style) ---");
         UIFactory factoryB = new BFactory();
         renderUI(factoryB);
     }
